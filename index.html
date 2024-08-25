@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lepasi</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            width: 300px;
+            height: 200px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        #noButton {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="questionContainer">
+    <h1>Hocemo li ici na drugi dejt?</h1>
+    <button id="yesButton">Da</button>
+    <button id="noButton">Ne</button>
+</div>
+
+<script>
+    const noButton = document.getElementById('noButton');
+    const container = document.getElementById('questionContainer');
+
+    function moveButton() {
+        // Get the container's dimensions
+        const containerRect = container.getBoundingClientRect();
+        const buttonWidth = noButton.clientWidth;
+        const buttonHeight = noButton.clientHeight;
+
+        // Calculate new x and y positions within the container's boundaries
+        const x = Math.random() * (containerRect.width - buttonWidth);
+        const y = Math.random() * (containerRect.height - buttonHeight);
+
+        noButton.style.left = `${x}px`;
+        noButton.style.top = `${y}px`;
+    }
+
+    noButton.addEventListener('click', moveButton); // Handles touch events on mobile
+
+    noButton.addEventListener('mouseenter', moveButton); // Handles hover events on desktop
+
+    document.getElementById('yesButton').addEventListener('click', function () {
+        alert("Ok jedva cekam");
+    });
+
+    document.getElementById('noButton').addEventListener('click', function () {
+        alert(":(");
+    });
+</script>
+
+</body>
+</html>
